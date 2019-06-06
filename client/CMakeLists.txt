@@ -4,7 +4,10 @@ set(EXECUTABLE_NAME
 
 # Link all of the appropriate source files
 set(SOURCES
-	src/main.cpp)
+	src/main.cpp
+	src/Client.cpp)
+set(INCLUDES
+	include/AjaxCatalyst/Client/Client.h)
 
 # Find the appropriate version of SFML
 # If the package can't be found, terminate the script
@@ -15,7 +18,8 @@ include_directories(include)
 
 # Add an executable to the project
 add_executable(${EXECUTABLE_NAME}
-	${SOURCES})
+	${SOURCES}
+	${INCLUDES})
 
 # Link the libraries to the given executable
 target_link_libraries(${EXECUTABLE_NAME}
