@@ -6,7 +6,7 @@ int main(int argc, char** argv)
 	// Use the second command line argument for the port number
 	// If no such argument exists, use the default
 	unsigned const short port = (argc > 1) ? atoi(argv[1]) : 6567;
-	AjaxCatalyst::Server* server = new AjaxCatalyst::Server();
+	AjaxCatalyst::Server* server = new AjaxCatalyst::Server(port);
 	sf::Clock clock;
 	sf::Time lag;
 	const sf::Time frameLimit = sf::seconds(1.0f / 60.0f); // 60 frames-per-second
