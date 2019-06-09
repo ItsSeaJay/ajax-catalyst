@@ -1,6 +1,7 @@
 #pragma once
 
-#include<list>
+#include <list>
+#include <mutex>
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -28,9 +29,9 @@ namespace AjaxCatalyst
 		sf::SocketSelector mSocketSelector;
 
 		std::list<sf::TcpSocket*> mClients;
+		std::mutex mMutex;
 
 		const unsigned short mPort;
-		const unsigned short mCapacity;
 
 		void clientConnected();
 		void clientDisconnected();
