@@ -1,5 +1,8 @@
 #pragma once
 
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+
 namespace AjaxCatalyst
 {
 	class Server
@@ -14,7 +17,10 @@ namespace AjaxCatalyst
 		void draw();
 		void stop();
 
+		const bool& isRunning() const;
+
 	private:
+		sf::RenderWindow mWindow;
 
 	};
 }
