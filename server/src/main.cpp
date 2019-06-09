@@ -1,4 +1,5 @@
 #include <iostream>
+#include <AjaxCatalyst/Server/Server.h>
 
 int main(int argc, char** argv)
 {
