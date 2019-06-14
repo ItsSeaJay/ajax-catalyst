@@ -2,6 +2,7 @@
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 
 namespace AjaxCatalyst
 {
@@ -21,5 +22,6 @@ namespace AjaxCatalyst
 
 	private:
 		sf::RenderWindow mWindow;
+		sf::TcpSocket mSocket;
 	};
 }

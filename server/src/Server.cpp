@@ -15,39 +15,36 @@ void AjaxCatalyst::Server::start()
 
 void AjaxCatalyst::Server::update(const float& delta)
 {
-	if (mSocketSelector.wait())
+	if (mSocketSelector.isReady(mListener))
 	{
-		if (mSocketSelector.isReady(mListener))
-		{
-			// There is an incoming connection
-			sf::TcpSocket* client = new sf::TcpSocket();
+		// There is an incoming connection
+		sf::TcpSocket* client = new sf::TcpSocket();
 
-			if (mListener.accept(*client) == sf::Socket::Done)
-			{
-				mClients.push_back(client);
-				mSocketSelector.add(*client);
-			}
-			else
-			{
-				// There's been an error
-				delete client;
-			}
+		if (mListener.accept(*client) == sf::Socket::Done)
+		{
+			mClients.push_back(client);
+			mSocketSelector.add(*client);
 		}
 		else
 		{
-			// The listener socket is not ready, test all the other sockets
-			for (std::list<sf::TcpSocket*>::iterator iterator = mClients.begin();
-				iterator != mClients.end();
-				++iterator)
-			{
-				// Dereference the pointer to the client
-				sf::TcpSocket& client = **iterator;
+			// There's been an error
+			delete client;
+		}
+	}
+	else
+	{
+		// The listener socket is not ready, test all the other sockets
+		for (std::list<sf::TcpSocket*>::iterator iterator = mClients.begin();
+			iterator != mClients.end();
+			++iterator)
+		{
+			// Dereference the pointer to the client
+			sf::TcpSocket& client = **iterator;
 
-				if (mSocketSelector.isReady(client))
-				{
-					// The client has sent the server some data
-					sf::Packet packet;
-				}
+			if (mSocketSelector.isReady(client))
+			{
+				// The client has sent the server some data
+				sf::Packet packet;
 			}
 		}
 	}

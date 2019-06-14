@@ -13,7 +13,7 @@ void AjaxCatalyst::Client::start()
 
 void AjaxCatalyst::Client::update(const float& delta)
 {
-
+	     
 }
 
 void AjaxCatalyst::Client::pollEvents()
